@@ -1,0 +1,22 @@
+{
+  "name": "pedido-de-namoro",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "fotos": "node scripts/medir-fotos.mjs",
+    "predev": "node scripts/medir-fotos.mjs",
+    "prebuild": "node scripts/medir-fotos.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
