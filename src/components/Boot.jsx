@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
-import { NOME } from '../config'
+import { useCasal } from '../casal'
 
-const LINES = [
+const montarLinhas = (NOME, MEMORIAS) => [
   '> iniciando amor.exe ...',
   '> conectando ao meu coração ......... OK',
   `> escaneando sentimentos por ${NOME} ...`,
   '> nível de paixão detectado: ██████████ 9999%',
   '> ⚠ ALERTA: sentimento acima da capacidade do sistema',
-  '> compilando memórias: elevador, mar, pôr do sol ... OK',
+  `> compilando memórias: ${MEMORIAS} ... OK`,
   '> carregando a pergunta mais importante da vida ...',
 ]
 
 export default function Boot({ onDone }) {
+  const { NOME, MEMORIAS } = useCasal()
+  const [LINES] = useState(() => montarLinhas(NOME, MEMORIAS))
   const [shown, setShown] = useState([])
   const [typing, setTyping] = useState('')
   const [progress, setProgress] = useState(0)

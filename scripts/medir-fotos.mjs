@@ -20,10 +20,18 @@ function jpegSize(buf) {
   return null
 }
 
-for (const f of fs.readdirSync(dir)) {
-  if (!/\.jpe?g$/i.test(f)) continue
-  const s = jpegSize(fs.readFileSync(path.join(dir, f)))
-  if (s) out[`/fotos/${f}`] = s
+// percorre public/fotos e as subpastas de cada casal (ex.: public/fotos/vinilucca)
+function medir(pasta, prefixo) {
+  for (const f of fs.readdirSync(pasta, { withFileTypes: true })) {
+    if (f.isDirectory()) {
+      medir(path.join(pasta, f.name), `${prefixo}${f.name}/`)
+      continue
+    }
+    if (!/\.jpe?g$/i.test(f.name)) continue
+    const s = jpegSize(fs.readFileSync(path.join(pasta, f.name)))
+    if (s) out[`${prefixo}${f.name}`] = s
+  }
 }
+medir(dir, '/fotos/')
 fs.writeFileSync('src/fotos-tamanhos.json', JSON.stringify(out, null, 1))
 console.log(`medidas de ${Object.keys(out).length} fotos salvas`)

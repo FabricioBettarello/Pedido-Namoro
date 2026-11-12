@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { NOME } from '../config'
+import { useCasal } from '../casal'
 import { burst } from '../fx'
 
 const NAO_TEXTOS = [
@@ -22,6 +22,7 @@ const ALERTAS = [
 const VIRA_SIM = 16 // depois de tantas tentativas o "não" vira "sim"
 
 export default function Question({ onYes }) {
+  const { NOME } = useCasal()
   const [tries, setTries] = useState(0)
   const [pos, setPos] = useState(null)
   const [alerts, setAlerts] = useState([])

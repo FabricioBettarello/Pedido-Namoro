@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { CARTA, PROMESSAS, ASSINATURA, PS } from '../config'
+import { useCasal } from '../casal'
 import { burst, heartFirework, confettiRain, screenSize } from '../fx'
 
 const VELOCIDADE = 26 // ms por letra
@@ -10,6 +10,7 @@ function hoje() {
 }
 
 export default function Carta() {
+  const { CARTA, PROMESSAS, ASSINATURA, PS } = useCasal()
   const [fase, setFase] = useState('fechada') // fechada | abrindo | lendo
   const [n, setN] = useState(0) // letras já escritas
   const [promessas, setPromessas] = useState(0)

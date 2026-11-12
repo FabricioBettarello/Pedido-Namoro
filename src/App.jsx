@@ -4,8 +4,10 @@ import { prepareLocal, prepareSpotify, playMusic, hasLocalMusic } from './music'
 import Boot from './components/Boot'
 import Question from './components/Question'
 import Celebration from './components/Celebration'
+import { useCasal } from './casal'
 
 export default function App() {
+  const { MUSICA_LOCAL, SPOTIFY_TRACK_ID } = useCasal()
   const canvasRef = useRef(null)
   const spotifyRef = useRef(null)
   // atalho de ensaio: abrir com #sim no final do endereço pula direto pra comemoração
@@ -16,9 +18,9 @@ export default function App() {
   useEffect(() => startFx(canvasRef.current), [])
 
   useEffect(() => {
-    prepareLocal()
-    prepareSpotify(spotifyRef.current)
-  }, [])
+    prepareLocal(MUSICA_LOCAL)
+    prepareSpotify(spotifyRef.current, SPOTIFY_TRACK_ID)
+  }, [MUSICA_LOCAL, SPOTIFY_TRACK_ID])
 
   const handleYes = async () => {
     setFlash(true)

@@ -1,12 +1,10 @@
-import { SPOTIFY_TRACK_ID, MUSICA_LOCAL } from './config'
-
 let spotifyController = null
 let wantPlay = false // clicou em "sim" antes do player ficar pronto
 let localAudio = null
 let localOk = false
 
 // Verifica se existe /public/musica.mp3 (o Vite devolve index.html quando não existe)
-export async function prepareLocal() {
+export async function prepareLocal(MUSICA_LOCAL) {
   try {
     const r = await fetch(MUSICA_LOCAL, { method: 'HEAD', cache: 'no-store' })
     const type = r.headers.get('content-type') || ''
@@ -23,7 +21,7 @@ export async function prepareLocal() {
 }
 
 // Cria o player do Spotify dentro do container (via IFrame API oficial)
-export function prepareSpotify(container) {
+export function prepareSpotify(container, SPOTIFY_TRACK_ID) {
   if (!container || container.dataset.ready) return
   container.dataset.ready = '1'
   const target = document.createElement('div')

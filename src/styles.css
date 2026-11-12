@@ -386,3 +386,13 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .ps { margin-top: 26px; text-align: left; font-family: "Caveat", cursive; font-size: clamp(22px, 3vw, 27px); color: #6b3a57; opacity: 0; }
 .assinatura-bloco.on .ps { animation: surgir .8s 2.2s forwards; }
 @keyframes surgir { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ---------- rota de casal que não existe ---------- */
+.nao-encontrado { min-height: 100vh; display: grid; place-items: center; padding: 16px; text-align: center; }
+.nao-encontrado-card {
+  padding: 48px 40px; border-radius: 28px; background: #2a0040e6; border: 1px solid #ffffff30;
+  box-shadow: 0 0 80px #ff2e8855;
+}
+.nao-encontrado-emoji { font-size: 90px; animation: beat 1.2s infinite; display: inline-block; }
+.nao-encontrado h1 { font-size: clamp(60px, 14vw, 120px); font-weight: 900; color: #fff; text-shadow: 0 0 30px #ff2e88; }
+.nao-encontrado p { font-family: 'Caveat', cursive; font-size: 32px; color: #ffd6ec; }

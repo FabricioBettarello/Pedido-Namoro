@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { FOTOS, BILHETES, NOME } from '../config'
+import { useCasal } from '../casal'
 import Carta from './Carta'
 import TAMANHOS from '../fotos-tamanhos.json'
 import { burst, heartFirework, confettiRain, setAmbient, screenSize } from '../fx'
@@ -66,6 +66,7 @@ function Reveal({ children, className = '', delay = 0 }) {
 }
 
 export default function Celebration() {
+  const { FOTOS, BILHETES, NOME } = useCasal()
   const t = useCounter()
   const [lightbox, setLightbox] = useState(null)
 
